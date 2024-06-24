@@ -125,6 +125,32 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filtres {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.filtres button {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	color: #1D6154;
+	background-color: white;
+	margin : 1em 0 3em 0;
+	text-align: center;
+	border: #1D6154 solid 1px;
+	border-radius: 60px;
+	padding: 8px 20px;
+	cursor: pointer;
+}
+
+.filtres button.selected {
+	color: white;
+	background-color: #1D6154;
+}
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -168,6 +194,12 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+#contact a {
+	color: black;
+	display: flex;
+	justify-content: center;
+	margin-bottom: 300px;
+}
 
 input[type="submit"]{
 	font-family: 'Syne';
@@ -177,7 +209,7 @@ input[type="submit"]{
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ;
+	border-radius: 60px ; 
 }
 
 footer nav ul {
