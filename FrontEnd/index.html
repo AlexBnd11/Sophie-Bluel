@@ -13,12 +13,12 @@
 </head>
 <body>
 <header>
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+	<a href="index.html"><h1>Sophie Bluel <span>Architecte d'intérieur</span></h1></a>
 	<nav>
 		<ul>
 			<li>projets</li>
 			<li>contact</li>
-			<li>login</li>
+			<li class="login-logout"><a href="login.html">login</a></li>
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
@@ -36,7 +36,10 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="projets">
+			<h2>Mes Projets</h2>
+			<p class="modifier"></p>
+		</div>
 		<div class="filtres">
 			<button class="tous selected">Tous</button>
 		</div>
@@ -57,7 +60,11 @@
 		</form>
 	</section>
 </main>
-
+<aside class="modale">
+	<div class="modale-wrapper">
+		
+	</div>
+</aside>
 <footer>
 	<nav>
 		<ul>
