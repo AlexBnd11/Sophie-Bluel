@@ -143,15 +143,16 @@ li:hover {
 	margin-bottom: 1em;
 }
 
+/***** Modifier *****/
+
 .modifier {
 	margin-left: 1.5em;
 	font-size: larger;
-}
-
-.modifier a {
-	color: inherit;
+	color: black;
 	text-decoration: none;
 }
+
+/***** Filtres *****/
 
 .filtres {
 	display: flex;
@@ -178,6 +179,8 @@ li:hover {
 	background-color: #1D6154;
 }
 
+/***** Galerie *****/
+
 .gallery {
 	width: 100%;
 	display: grid;
@@ -188,8 +191,84 @@ li:hover {
 
 .gallery img {
 	width: 100%;
-
 }
+
+/***** Modale *****/
+
+.modale {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5)
+}
+
+.modale-wrapper {
+	overflow: auto;
+	max-width: calc(100vw - 20px);
+	max-height: calc(100vh - 20px);
+	height: 700px;
+	width: 600px;
+	padding: 30px;
+	border-radius: 10px;
+	background-color: white;
+}
+
+.croix-modale {
+	display: flex;
+	justify-content: flex-end;
+	position: relative;
+ 	cursor: pointer;
+}
+
+.croix-modale::before {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 98.15%;
+	width: 0;
+	height: 0;
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
+	transform: translate(-50%, -50%);
+	transition: width 0.3s ease, height 0.3s ease;
+}
+  
+.croix-modale:hover::before {
+	width: 40px;
+	height: 40px;
+}
+
+.modale-wrapper h3 {
+	text-align: center;
+	font-size: 28px;
+	padding-top: 20px;
+}
+
+.btn-ajouter {
+	display: flex;
+	justify-content: center;
+}
+
+.btn-ajouter button {
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 16px;
+	color: white;
+	background-color: #1D6154;
+	margin : 1em 0 3em 0;
+	text-align: center;
+	border: #1D6154 solid 1px;
+	border-radius: 60px;
+	padding: 8px 50px;
+	cursor: pointer;
+}
+/***** Contact *****/
+
 #contact {
 	width: 50%;
 	margin: auto;
