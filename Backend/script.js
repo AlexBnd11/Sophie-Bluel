@@ -135,7 +135,7 @@ function genererPhotosModale() {
     photosModale.innerHTML += `
     <div class="conteneur-modifier-photos">
       <img src="${projets[i].imageUrl}">
-      <div class="trash" "${projets[i].id}">
+      <div class="trash" id="${projets[i].id}">
         <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
             <a href="#">
             <rect width="17" height="17" rx="2" fill="black"/>
@@ -147,15 +147,27 @@ function genererPhotosModale() {
     `;
   }
   photosModale.classList.remove("hidden")
+  supprimerPhotosModale()
 }
 
-function supprimerPhotsModale() {
-  const trash = document.querySelector(".trash")
-  trash.addEventListener("click", (e) => {
-
-  })
-  trash.preventDefault
+function supprimerPhotosModale() {
+  const trashIcons = document.querySelectorAll(".trash")
+  trashIcons.forEach(icon => {
+    icon.addEventListener('click', function() {
+        const iconId = this.id
+        const urlApi = "http://localhost:5678/api/works/" + iconId
+        console.log(token)
+          const response = await fetch(urlApi, {
+              method: "DELETE",
+              headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+              },
+          })
+    )
+})
 }
+
 
 function ajouterUnePhoto() {
   titreModale.innerHTML = `Ajout Photo`
