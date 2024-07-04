@@ -195,6 +195,13 @@ li:hover {
 
 /***** Modale *****/
 
+.hidden {
+	display: none !important;
+    padding: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
 .modale {
 	display: flex;
 	align-items: center;
@@ -339,7 +346,7 @@ li:hover {
 	font-size: smaller;
 }
 
-.bloc-ajouter-photos button {
+.bloc-ajouter-photos input[type="file"] {
 	font-family: 'Work Sans';
 	font-weight: 400;
 	font-size: 14px;

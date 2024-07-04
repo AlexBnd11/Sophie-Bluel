@@ -4,8 +4,20 @@ const projets = await swagger.json();
 const swaggerCategories = await fetch("http://localhost:5678/api/categories")
 const categories = await swaggerCategories.json();
 
+// Déclaration des variables
 const gallery = document.querySelector(".gallery");
 const filtres = document.querySelector(".filtres");
+const setCategories = new Set()
+const token = localStorage.getItem("token")
+const loginLogout = document.querySelector(".login-logout")
+const boutonModifier = document.querySelector(".modifier")
+const croixModale = document.querySelector(".croix-modale")
+const modale = document.querySelector(".modale")
+const titreModale = document.querySelector(".titre-modale")
+const photosModale = document.querySelector(".modifier-photos")
+const sectionAjouterPhotos = document.querySelector(".section-ajouter-photos")
+const divBtnAjouterModale = document.querySelector(".btn-ajouter-modale")
+const btnAjouterModale = document.querySelector(".btn-ajouter-modale button")
 
 genererProjetsEtCategories(projets, categories);
 
@@ -33,20 +45,19 @@ function genererProjetsEtCategories(projets, categories) {
         })
 
 // On ajoute dynamiquement les catégories via un Set pour prévenir l'apparition de doublons
-const setCategories = new Set();
-categories.forEach(category => {setCategories.add(category)});
+categories.forEach(category => {setCategories.add(category)})
 
   for (const i of setCategories) {
     const nomCategorie = i.name;
-    const button = document.createElement("button");
+    const button = document.createElement("button")
 
-    button.className = `btn${nomCategorie}`;
-    button.textContent = nomCategorie;
-    filtres.appendChild(button);
+    button.className = `btn${nomCategorie}`
+    button.textContent = nomCategorie
+    filtres.appendChild(button)
 
     button.addEventListener("click", () => {
-      filtrage(nomCategorie);
-      couleurBtnFiltrage(button);
+      filtrage(nomCategorie)
+      couleurBtnFiltrage(button)
     });
   };
 };
@@ -76,8 +87,6 @@ function filtrage (categorie) {
         };
 
 // Ajout du bouton modifier si un token est stocké localement
-const token = localStorage.getItem("token")
-const loginLogout = document.querySelector(".login-logout")
 
 if (token) {
   loginLogout.innerHTML = `<a href="index.html">logout</a>`
@@ -101,19 +110,18 @@ function afficherModale(e) {
   const modale = document.querySelector(".modale")
   modale.style.display = null
   genererPhotosModale()
+  sectionAjouterPhotos.style.display = "none"
+  divBtnAjouterModale.classList.remove("hidden")
+  titreModale.innerHTML = `Galerie photo`
 }
 
 function fermerModale(e) {
   modale.style.display = "none"
 }
 
-const boutonModifier = document.querySelector(".modifier")
 boutonModifier.addEventListener("click", afficherModale)
-
-const croixModale = document.querySelector(".croix-modale")
 croixModale.addEventListener("click", fermerModale)
 
-const modale = document.querySelector(".modale")
 modale.addEventListener("click", (e) => {
   const modaleWrapper = document.querySelector(".modale-wrapper");
   if (!(modaleWrapper.contains(e.target))) {
@@ -121,7 +129,6 @@ modale.addEventListener("click", (e) => {
   }
 });
 
-const photosModale = document.querySelector(".modifier-photos")
 function genererPhotosModale() {
   photosModale.innerHTML = ``
   for (let i = 0; i < projets.length; i++) {
@@ -139,6 +146,7 @@ function genererPhotosModale() {
     </div>
     `;
   }
+  photosModale.classList.remove("hidden")
 }
 
 function supprimerPhotsModale() {
@@ -149,14 +157,12 @@ function supprimerPhotsModale() {
   trash.preventDefault
 }
 
-function ajouterPhotos() {
-  const titreModale = document.querySelector(".titre-modale")
-  const sectionAjouterPhotos = document.querySelector(".section-ajouter-photos")
+function ajouterUnePhoto() {
   titreModale.innerHTML = `Ajout Photo`
   sectionAjouterPhotos.style.display = null
   photosModale.innerHTML = ``
-  btnAjouterModale.style.display = "none"
+  photosModale.classList.add("hidden")
+  divBtnAjouterModale.classList.add("hidden")
 }
 
-const btnAjouterModale = document.querySelector(".btn-ajouter-modale button")
-btnAjouterModale.addEventListener("click", (e) => {ajouterPhotos()})
+btnAjouterModale.addEventListener("click", (e) => {ajouterUnePhoto()})
