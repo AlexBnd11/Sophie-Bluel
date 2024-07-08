@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #fffef8;
 }
 ol, ul {
 	list-style: none;
@@ -145,6 +146,19 @@ li:hover {
 
 /***** Modifier *****/
 
+.header-edition {
+	height: 60px;
+	position: relative;
+	width: 99.4vw;
+	margin-left: calc(-50vw + 50%);
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 7px;
+}
+
 .modifier {
 	margin-left: 1.5em;
 	font-size: larger;
@@ -165,7 +179,7 @@ li:hover {
 	font-weight: 700;
 	font-size: 16px;
 	color: #1D6104;
-	background-color: white;
+	background-color: #fffef8;
 	margin : 1em 0 3em 0;
 	text-align: center;
 	border: #1D6104 solid 1px;
@@ -182,7 +196,6 @@ li:hover {
 /***** Galerie *****/
 
 .gallery {
-	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-column-gap: 20px;
@@ -190,7 +203,10 @@ li:hover {
 }
 
 .gallery img {
+	object-fit: cover;
 	width: 100%;
+	height: 475px;
+	margin-bottom: 4px;
 }
 
 /***** Modale *****/
@@ -341,7 +357,7 @@ li:hover {
 	background-color: #E8F1F6;
 	border-radius: 3px;
 	gap: 13px;
-	margin-top: 40px;
+	margin-bottom: 25px;
 }
 
 .bloc-ajouter-photos p {
@@ -354,6 +370,7 @@ li:hover {
 }
 
 .upload button {
+	z-index: 0;
 	font-family: 'Work Sans';
 	font-weight: 400;
 	font-size: 14px;
@@ -370,13 +387,18 @@ li:hover {
 	transition: 0.4s;
 }
 
+#preview {
+	max-height: 100%;
+}
+
+
 .btn-modale {
 	display: flex;
 	justify-content: center;
 	border-top: 1px solid gray;
 	margin: 20px 0px 0 0px;
 }
-.btn-modale input {
+#post-work {
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 14px;
@@ -389,6 +411,12 @@ li:hover {
 	padding: 9px 0 9px 0;
 	cursor: pointer;
 	margin-top: 30px;
+}
+
+.disabled {
+	background-color: #A7A7A7 !important;
+	cursor: default !important;
+	border: #A7A7A7 !important;
 }
 
 /***** Contact *****/
@@ -446,7 +474,8 @@ li:hover {
 	margin : 2em auto ;
 	width: 180px;
 	text-align: center;
-	border-radius: 60px ; 
+	border-radius: 60px; 
+	cursor: pointer;
 }
 
 footer nav ul {
@@ -454,4 +483,3 @@ footer nav ul {
 	justify-content: flex-end;
 	margin: 2em
 }
-
