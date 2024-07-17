@@ -16,6 +16,8 @@ const setCategories = new Set()
 const token = localStorage.getItem("token")
 const loginLogout = document.querySelector(".login-logout")
 const boutonModifier = document.querySelector(".modifier")
+const btnPrecedant = document.querySelector(".btn-precedant")
+const croixIcone = document.querySelector(".croix-icone")
 const croixModale = document.querySelector(".croix-modale")
 const modale = document.querySelector(".modale")
 const titreModale = document.querySelector(".titre-modale")
@@ -136,8 +138,11 @@ function afficherModale(e) {
   modale.style.display = null
   genererPhotosModale()
   sectionAjouterPhotos.style.display = "none"
+  btnPrecedant.style.display = "none"
+  croixModale.style.justifyContent = "flex-end"
   divBtnAjouterModale.classList.remove("hidden")
   titreModale.innerHTML = `Galerie photo`
+  
 }
 
 function fermerModale(e) {
@@ -145,7 +150,7 @@ function fermerModale(e) {
 }
 
 boutonModifier.addEventListener("click", afficherModale)
-croixModale.addEventListener("click", fermerModale)
+croixIcone.addEventListener("click", fermerModale)
 
 // On ferme la modale si on clique à côté
 modale.addEventListener("click", (e) => {
@@ -206,10 +211,13 @@ btnAjouterModale.addEventListener("click", (e) => {
   photosModale.innerHTML = ``
   photosModale.classList.add("hidden")
   divBtnAjouterModale.classList.add("hidden")
+  btnPrecedant.style.display = null
+  croixModale.style.justifyContent = "space-between"
   categoriesFormulaire()
-})
+  btnPrecedant.addEventListener("click", afficherModale)
+  })
 
-// Impossibilité de submit le formulaire quand le formulaire n'est pas rempli
+// Impossibilité de submit le formulaire quand il n'est pas rempli
 inputs.forEach(input => {
   input.addEventListener("input", checkFormulaire)
 })
